@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import InputSection from "./components/InputSection";
+import TodoList from "./components/TodoList";
 
 function App() {
+  const [todoTitle, setTodoTitle] = useState("");
+  const [todoList, setTodoList] = useState([]);
+  const [editMode, setEditMode] = useState(false);
+  const [editableTodo, setEditableTodo] = useState(null);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <InputSection
+        todoTitle={todoTitle}
+        setTodoTitle={setTodoTitle}
+        todoList={todoList}
+        setTodoList={setTodoList}
+        editMode={editMode}
+        setEditMode={setEditMode}
+        editableTodo={editableTodo}
+        setEditableTodo={setEditableTodo}
+
+        />
+        <TodoList
+        setTodoTitle={setTodoTitle}
+        todoList={todoList}
+        setTodoList={setTodoList}
+        setEditMode={setEditMode}
+        setEditableTodo={setEditableTodo}
+        
+        />
+        
+      </div>
     </div>
   );
 }
