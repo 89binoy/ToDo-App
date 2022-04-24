@@ -1,10 +1,10 @@
-const TodoList = () = {
+const TodoList = (props) => {
 
     const editTodoHandler = (id) => {
         const todoToBeEdited = props.todoList.find((item) => item.id === id);
         props.setEditMode(true);
-        props.setEditableTodo(props.todoToBeEdited);
-        props.setTodoTitle(props.todoToBeEdited.title);
+        props.setEditableTodo(todoToBeEdited);
+        props.setTodoTitle(todoToBeEdited.title);
       }
       
       const deleteTodoHandler = (id) => {

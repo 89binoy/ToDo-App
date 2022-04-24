@@ -1,10 +1,10 @@
-const InputSection = (props) = {
+const InputSection = (props) => {
 
     const createTodoHandler = () => {
         if (props.todoTitle !== "") {
           const newTodo = {
             id: Date.now(),
-            title: todoTitle,
+            title: props.todoTitle,
             isComplete: false,
           }
           props.setTodoList([...props.todoList, newTodo]);
@@ -29,7 +29,7 @@ const InputSection = (props) = {
           }
 
     return (
-      
+      <div>
           <input
             type="text"
             value={props.todoTitle}
@@ -42,7 +42,7 @@ const InputSection = (props) = {
           >
             {props.editMode ? "Update Todo" : "Add Todo"}
           </button>
-     
+          </div>
 
     )
 }

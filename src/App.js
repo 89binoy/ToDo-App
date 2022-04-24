@@ -1,15 +1,12 @@
 import { useState } from "react";
 import "./App.css";
-import InputSection from "./components/InputSection";
-import TodoList from "./components/TodoList";
-
+import InputSection from "./Components/InputSection";
+import TodoList from "./Components/TodoList";
 function App() {
   const [todoTitle, setTodoTitle] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [editableTodo, setEditableTodo] = useState(null);
-
-
   return (
     <div className="App">
       <div>
@@ -22,7 +19,6 @@ function App() {
         setEditMode={setEditMode}
         editableTodo={editableTodo}
         setEditableTodo={setEditableTodo}
-
         />
         <TodoList
         setTodoTitle={setTodoTitle}
@@ -30,7 +26,6 @@ function App() {
         setTodoList={setTodoList}
         setEditMode={setEditMode}
         setEditableTodo={setEditableTodo}
-        
         />
         
       </div>
