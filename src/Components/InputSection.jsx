@@ -7,7 +7,23 @@ const InputSection = (props) => {
             title: props.todoTitle,
             isComplete: false,
           }
-          props.setTodoList([...props.todoList, newTodo]);
+
+          fetch("http://localhost:3000/todoList",{
+            method: 'POST',
+            body: JSON.stringify(newTodo),
+            headers: {
+              'Content-type': 'application/json' 
+            },
+          })
+          .then(response=> response.json)
+          .then(()=>{
+            // props.fetchTodoList();
+            fetch("http://localhost:3000/todoList")
+            .then(res=> res.json())
+            .then(data=>props.setTodoList(data))
+          })
+
+          // props.setTodoList([...props.todoList, newTodo]);
           props.setTodoTitle("");
         } else {
           alert("Please enter valid title");
@@ -15,14 +31,30 @@ const InputSection = (props) => {
       }
 
           const updateTodoHandler = () => {
-            props.setTodoList(
-              props.todoList.map((todo) => {
-                if (todo.id === props.editableTodo.id) {
-                  todo.title = props.todoTitle;
-                }
-                return todo;
-              })
-            );
+            let updateableObj={
+              ...props.editableTodo,
+              title: props.todoTitle
+            }
+            fetch('http://localhost:3000/todoList/${props.editableTodo.id}',{
+              headers:{
+                'Content-type': 'application/json'
+              },
+              method: 'PUT',
+              body: JSON.stringify(updateableObj)
+            })
+            .then(()=>{
+              fetch("http://localhost:3000/todoList")
+            .then(response=> response.json())
+            .then(data=>props.setTodoList(data))
+            })
+            // props.setTodoList(
+            //   props.todoList.map((todo) => {
+            //     if (todo.id === props.editableTodo.id) {
+            //       todo.title = props.todoTitle;
+            //     }
+            //     return todo;
+            //   })
+            // );
             props.setEditMode(false);
             props.setTodoTitle("");
             props.setEditableTodo(null);

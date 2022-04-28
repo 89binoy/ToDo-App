@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import InputSection from "./Components/InputSection";
 import TodoList from "./Components/TodoList";
@@ -7,7 +7,23 @@ function App() {
   const [todoList, setTodoList] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [editableTodo, setEditableTodo] = useState(null);
+  
+
+  const fetchTodoList=()=>{
+    fetch("http://localhost:3000/todoList")
+    .then((response)=>response.json())
+    .then(data=> setTodoList(data))
+
+  }
+  useEffect(()=>{
+    fetchTodoList();
+    // fetch("http://localhost:3000/todoList")
+    // .then((response)=>response.json())
+    // .then(data=> setTodoList(data))
+  },[])
+  
   return (
+
     <div className="App">
       <div>
         <InputSection

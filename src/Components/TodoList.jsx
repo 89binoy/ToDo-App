@@ -8,6 +8,10 @@ const TodoList = (props) => {
       }
       
       const deleteTodoHandler = (id) => {
+
+        // fetch('http://localhost:3000/todoList/${id}'),{
+        //     headers: 
+        // }
         const newTodoList = props.todoList.filter((item) => item.id !== id);
         props.setTodoList(newTodoList);
       }
