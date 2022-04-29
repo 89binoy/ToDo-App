@@ -2,7 +2,7 @@
   "todoList": [
     {
       "id": "1",
-      "title": "todo 1",
+      "title": "todo 11",
       "isComplete": false
     },
     {
@@ -13,11 +13,6 @@
     {
       "id": "3",
       "title": "todo 3",
-      "isComplete": false
-    },
-    {
-      "id": 1651182569926,
-      "title": "server",
       "isComplete": false
     },
     {
@@ -33,31 +28,6 @@
     {
       "id": 1651186740810,
       "title": "server 4",
-      "isComplete": false
-    },
-    {
-      "id": 1651186858681,
-      "title": "ser5",
-      "isComplete": false
-    },
-    {
-      "id": 1651186973377,
-      "title": "set 55",
-      "isComplete": false
-    },
-    {
-      "id": 1651187009441,
-      "title": "set 56",
-      "isComplete": false
-    },
-    {
-      "id": 1651187078587,
-      "title": "set 50",
-      "isComplete": false
-    },
-    {
-      "id": 1651187135529,
-      "title": "set 51",
       "isComplete": false
     }
   ],

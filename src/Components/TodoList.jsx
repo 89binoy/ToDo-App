@@ -9,11 +9,19 @@ const TodoList = (props) => {
       
       const deleteTodoHandler = (id) => {
 
-        // fetch('http://localhost:3000/todoList/${id}'),{
-        //     headers: 
-        // }
-        const newTodoList = props.todoList.filter((item) => item.id !== id);
-        props.setTodoList(newTodoList);
+        fetch(`http://localhost:3000/todoList/${id}`,{
+            headers: {
+                'Content-type': 'application/json'
+            },
+            method: 'DELETE'
+        })
+        .then(()=>{
+            fetch('http://localhost:3000/todoList')
+            .then(res=> res.json())
+            .then(data=>props.setTodoList(data))
+        })
+        // const newTodoList = props.todoList.filter((item) => item.id !== id);
+        // props.setTodoList(newTodoList);
       }
       
     return(

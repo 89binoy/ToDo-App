@@ -18,7 +18,7 @@ const InputSection = (props) => {
           .then(response=> response.json)
           .then(()=>{
             // props.fetchTodoList();
-            fetch("http://localhost:3000/todoList")
+            fetch('http://localhost:3000/todoList')
             .then(res=> res.json())
             .then(data=>props.setTodoList(data))
           })
@@ -35,7 +35,7 @@ const InputSection = (props) => {
               ...props.editableTodo,
               title: props.todoTitle
             }
-            fetch('http://localhost:3000/todoList/${props.editableTodo.id}',{
+            fetch(`http://localhost:3000/todoList/${props.editableTodo.id}`,{
               headers:{
                 'Content-type': 'application/json'
               },
@@ -43,18 +43,10 @@ const InputSection = (props) => {
               body: JSON.stringify(updateableObj)
             })
             .then(()=>{
-              fetch("http://localhost:3000/todoList")
+              fetch(`http://localhost:3000/todoList`)
             .then(response=> response.json())
             .then(data=>props.setTodoList(data))
             })
-            // props.setTodoList(
-            //   props.todoList.map((todo) => {
-            //     if (todo.id === props.editableTodo.id) {
-            //       todo.title = props.todoTitle;
-            //     }
-            //     return todo;
-            //   })
-            // );
             props.setEditMode(false);
             props.setTodoTitle("");
             props.setEditableTodo(null);
